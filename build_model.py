@@ -16,7 +16,7 @@ y = data[labels]
 #build model
 model = RandomForestClassifier(random_state=1)
 model.fit(X,y)
-
+print(model.score(X,y))
 #save the model to disk
 filename = 'finalized_model.sav'
 pickle.dump(model, open(filename, 'wb'))

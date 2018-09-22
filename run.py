@@ -40,9 +40,17 @@ X = df[features]
 
 #make predictions
 predictions = loaded_model.predict_proba(X)
-df[''] = predictions
+#print(predictions[0][0][0])
+data = predictions[0]
+#df2 = pd.DataFrame({'Chicken':data[:,0],'Cabbage':data[:,1]})
+df['Chicken'] = data[:,0]
+df['Cabbage'] = data[:,1]
+print(df.head())
+#print(result.head())
+#result.reset_index()
+#df[''] = predictions
 
 #export to json
-output = result.to_json()
+output =df.to_json()
 with open('data.txt', 'w') as outfile:  
     json.dump(output, outfile)
