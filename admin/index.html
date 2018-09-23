@@ -1,86 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Dashboard</title>
-
+    <title>Dashboard | Polluwet</title>
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
     <!-- Page level plugin CSS-->
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+</head>
 
-  </head>
-
-  <body id="page-top">
-
+<body id="page-top" ng-app="Polluwet">
     <div id="wrapper">
+        <div id="content-wrapper">
+            <div class="container">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Overview</li>
+                </ol>
+                <!-- Area Chart Example-->
+                <!-- <div>
+                    <input type="number" name="text_1" ng-model="test1">
+                </div> -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-chart-area"></i> Concentration of pollutants (mg/m<sup>3</sup>) Against Time</div>
+                    <div class="card-body">
+                        <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                    </div>
+                    <p class="col-sm-12"><b>Legend</b>
+                    <span style="color:#3FBF3F;">Ammonia</span>
+                    <span style="color:#3F3FBF;">Nitrates</span>
+                    <span style="color:#7F3FBF;">Phosphates</span></p>
+                </div>
 
-      <div id="content-wrapper">
+            
+                    <div class="card col-sm-12">
+                            <div class="row">
+                                <div class="card-header col-sm-12">
+                                <div class="col-sm-12">
+                                    <i class="fas fa-chart-area"></i> Device Heatmap &gt; TIME 12:00:00AM</div></div>
+                            </div>
+                            <div class="card-body">
+                              <div id="map"></div>
+                            </div>
+                            <div id="floating-panel">
+                        <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+                        <button onclick="changeGradient()">Change gradient</button>
+                        <button onclick="changeRadius()">Change radius</button>
+                        <button onclick="changeOpacity()">Change opacity</button>
+                    </div>
+                    </div>
+                    
+        
 
-        <div class="container">
+                <br>
 
-          <!-- Breadcrumbs-->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Overview</li>
-          </ol>
-
-          <!-- Area Chart Example-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-chart-area"></i>
-              Area Chart Example</div>
-            <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                <div class="container">
+                <div class="row">
+                  <h4>Prediction Outcomes / Report Based Time 12:00:00AM</h4>
+                </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-8 card carbon-card">
+                            <div class="card-body">
+                                <h4>Chicken</h4>
+                                <h2>65 %</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 card phosphorus-card">
+                            <div class="card-body">
+                                <h4>Cabbage</h4>
+                                <h2>15 %</h2>
+                            </div>
+                        </div>
+                       
+                        <!-- <div class="col-lg-4 card nitrate-card">
+                            <div class="card-body">
+                                <h4>Nitrate</h4>
+                                <h2>0.5 %</h2>
+                            </div>
+                        </div> -->
+                      
+                    
+                      
+                    </div>
+                    <div class="row">
+                    <h5>Summary based on Prediction</h5>
+                    <hr>
+                    <p class="col-sm-12">Most probable pollution source: Chicken Farm(65%) <br>
+Highest chemical concentration level: 0.9% (Ammonia) <br>
+Contamination level: <b>High</b> <br>
+Conclusion: Immediate action required!</p>
+                    </div>
             </div>
-          </div>
-
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 card">
-                <div class="card-body">
-                  <h1>Carbon</h1>
-                  <h2>60%</h2>
-                </div>
-              </div>
-
-              <div class="col-lg-4 card">
-                <div class="card-body">
-                  <h1>Phosphate</h1>
-                  <h2>20%</h2>
-                </div>
-              </div>
-
-              <div class="col-lg-4 card">
-                <div class="card-body">
-                  <h1>Nitrate</h1>
-                  <h2>20%</h2>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-      <!-- /.content-wrapper -->
+    </div>
+    <!-- /.content-wrapper -->
     </div>
     <!-- /#wrapper -->
-
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
@@ -88,19 +116,89 @@
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Page level plugin JavaScript-->
     <script src="vendor/chart.js/Chart.min.js"></script>
-
     <!-- Custom scripts for all pages-->
     <script type="text/javascript" src="data.json"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <!-- Demo scripts for this page-->
     <script src="js/demo/chart-area-demo.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9QjXse_ZEgZxhjjctZ5Q9UvF23Jk7tfc&libraries=visualization&callback=initMap">
+    </script>
+    <script text="javascript">
+    var app = angular.module('Polluwet', []);
+    </script>
+    <script>
+    // This example requires the Visualization library. Include the libraries=visualization
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
 
-  </body>
+    var map, heatmap, heatmap2;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: { lat: 3.9723049, lng: 100.9645868 },
+            mapTypeId: 'satellite'
+        });
+
+        heatmap = new google.maps.visualization.HeatmapLayer({
+            data: getPoints(),
+            map: map
+        });
+
+
+    }
+
+    function toggleHeatmap() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+    }
+
+    function changeGradient() {
+        var gradient = [
+            'rgba(0, 255, 255, 0)',
+            'rgba(0, 255, 255, 1)',
+            'rgba(0, 191, 255, 1)',
+            'rgba(0, 127, 255, 1)',
+            'rgba(0, 63, 255, 1)',
+            'rgba(0, 0, 255, 1)',
+            'rgba(0, 0, 223, 1)',
+            'rgba(0, 0, 191, 1)',
+            'rgba(0, 0, 159, 1)',
+            'rgba(0, 0, 127, 1)',
+            'rgba(63, 0, 91, 1)',
+            'rgba(127, 0, 63, 1)',
+            'rgba(191, 0, 31, 1)',
+            'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+
+    }
+
+    function changeRadius() {
+        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+
+    }
+
+    function changeOpacity() {
+        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+    }
+
+    // Heatmap data: 500 Points
+    function getPoints() {
+        return [
+            new google.maps.LatLng(3.981958, 100.981235),
+            new google.maps.LatLng(3.978958, 100.977277),
+            new google.maps.LatLng(3.971174, 100.975436),
+            new google.maps.LatLng(3.966233, 100.972198),
+            new google.maps.LatLng(3.967213, 100.963489)
+        ];
+    }
+    // Heatmap data: 500 Points
+    </script>
+    <script src="vendor/m2x-javascript/dist/current.js"></script>
+</body>
 
 </html>

@@ -7,21 +7,47 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+    labels: ["12:00:00PM", "12:01:00PM", "12:02:00PM", "12:03:00PM", "12:04:00PM", "12:05:00PM", "12:06:00PM"],
     datasets: [{
-      label: "Sessions",
+      label: "Timestamp",
       lineTension: 0.3,
       backgroundColor: "rgba(2,117,216,0.2)",
       borderColor: "rgba(2,117,216,1)",
       pointRadius: 5,
-      pointBackgroundColor: "rgba(2,117,216,1)",
+      pointBackgroundColor: "rgba(63, 63, 191, 1)",
       pointBorderColor: "rgba(255,255,255,0.8)",
       pointHoverRadius: 5,
       pointHoverBackgroundColor: "rgba(2,117,216,1)",
       pointHitRadius: 50,
       pointBorderWidth: 2,
-      data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
-    }],
+      data: [0.01, 0.02, 0.005, 0.001, 0.125, 0.04],
+    },{
+    label: "Timestamp",
+      lineTension: 0.3,
+      backgroundColor: "rgba(2,193,66,66,0.2)",
+      borderColor: "rgba(2,193,66,1)",
+      pointRadius: 5,
+      pointBackgroundColor: "rgba(63, 191, 63, 1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(2,193,66,1)",
+      pointHitRadius: 50,
+      pointBorderWidth: 2,
+      data: [0.04, 0.03, 0.106, 0.211, 0.125, 0.08],
+     },{
+    label: "Timestamp",
+      lineTension: 0.3,
+      backgroundColor: "rgba(2,191,63,191,0.2)",
+      borderColor: "rgba(2,191,63,1)",
+      pointRadius: 5,
+      pointBackgroundColor: "rgba(127, 63, 191, 1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(2,191,63,1)",
+      pointHitRadius: 50,
+      pointBorderWidth: 2,
+      data: [0.04, 0.06, 0.206, 0.311, 0.190, 0.18],
+     }],
   },
   options: {
     scales: {
@@ -38,8 +64,8 @@ var myLineChart = new Chart(ctx, {
       }],
       yAxes: [{
         ticks: {
-          min: 0,
-          max: 40000,
+          min: 0.0,
+          max: 0.5,
           maxTicksLimit: 5
         },
         gridLines: {
