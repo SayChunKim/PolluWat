@@ -52,5 +52,5 @@ print(df.head())
 
 #export to json
 output =df.to_json()
-with open('data.txt', 'w') as outfile:  
+with open('data.json', 'w') as outfile:  
     json.dump(output, outfile)
