@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 def model():
 
   # load the model
-  model = '../machine_learning_model/finalized_model.sav'
+  model = 'machine_learning_model/finalized_model.sav'
   loaded_model = pickle.load(open(model, 'rb'))
 
   # load the input data
